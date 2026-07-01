@@ -37,7 +37,7 @@ export default function ProjectsPage() {
     
     try {
       const response = await fetch(`${API_BASE_URL}/quotations/${id}`, {
-        method: `DELETE',
+        method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Failed to delete project');
