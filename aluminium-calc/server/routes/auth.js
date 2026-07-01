@@ -121,7 +121,8 @@ router.post('/me/avatar', auth, upload.single('avatar'), async (req, res) => {
     if (!user) return res.status(404).json({ message: 'User not found' });
     
     // Construct the URL to access the uploaded file
-    const avatarUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+    const avatarUrl = `${protocol}://${req.get('host')}/uploads/${req.file.filename}`;
     user.avatarUrl = avatarUrl;
     
     await user.save();
