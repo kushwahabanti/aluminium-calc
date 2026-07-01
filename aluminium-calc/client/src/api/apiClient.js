@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL } from '../config';
+const BASE_URL = API_BASE_URL;
 
 async function fetchAPI(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;

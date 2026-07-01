@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { createContext, useState, useEffect } from 'react';
 import { initStore, getFullConfig } from '../services/dataStore';
 
@@ -24,8 +25,8 @@ export const AuthProvider = ({ children }) => {
   const fetchUserAndSettings = async () => {
     try {
       const [userRes, settingsRes] = await Promise.all([
-        fetch('http://localhost:5000/api/auth/me', { headers: { 'Authorization': `Bearer ${token}` } }),
-        fetch('http://localhost:5000/api/settings', { headers: { 'Authorization': `Bearer ${token}` } })
+        fetch(`${API_BASE_URL}/auth/me`, { headers: { 'Authorization': `Bearer ${token}` } }),
+        fetch(`${API_BASE_URL}/settings`, { headers: { 'Authorization': `Bearer ${token}` } })
       ]);
       
       if (userRes.ok) {
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
   const handleStoreUpdate = async (newConfig) => {
     try {
-      const res = await fetch('http://localhost:5000/api/settings', {
+      const res = await fetch(`${API_BASE_URL}/settings`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -70,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateUserProfile = async (updates) => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/me', {
+      const res = await fetch(`${API_BASE_URL}/auth/me`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ export const AuthProvider = ({ children }) => {
       const formData = new FormData();
       formData.append('avatar', file);
 
-      const res = await fetch('http://localhost:5000/api/auth/me/avatar', {
+      const res = await fetch(`${API_BASE_URL}/auth/me/avatar`, {
         method: 'POST',
         headers: { 
           'Authorization': `Bearer ${token}`
@@ -113,7 +114,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password) => {
-    const res = await fetch('http://localhost:5000/api/auth/login', {
+    const res = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -128,7 +129,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (name, email, password) => {
-    const res = await fetch('http://localhost:5000/api/auth/register', {
+    const res = await fetch(`${API_BASE_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password })

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import { useState, useMemo, useCallback, useEffect, useContext } from 'react';
 import { calculate } from '../../../shared/calculators/calculator.js';
 import { parseToUnits, unitsToFraction, unitsToSut } from '../../../shared/measurement/measurementEngine.js';
@@ -158,7 +159,7 @@ export default function CalculatorPage() {
     
     try {
       // 1. Create/Find Customer
-      const custRes = await fetch('http://localhost:5000/api/customers', {
+      const custRes = await fetch(`${API_BASE_URL}/customers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ name: customerName, phone: customerPhone })
@@ -168,7 +169,7 @@ export default function CalculatorPage() {
       // 2. Save all windows as Projects
       const projectIds = [];
       for (const w of projectList) {
-        const projRes = await fetch('http://localhost:5000/api/projects', {
+        const projRes = await fetch(`${API_BASE_URL}/projects`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
           body: JSON.stringify({
@@ -186,7 +187,7 @@ export default function CalculatorPage() {
       }
 
       // 3. Save Quotation
-      const quoteRes = await fetch('http://localhost:5000/api/quotations', {
+      const quoteRes = await fetch(`${API_BASE_URL}/quotations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({

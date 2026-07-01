@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext.jsx';
 import './ReportsPage.css';
@@ -16,7 +17,7 @@ export default function ReportsPage() {
 
   const fetchQuotations = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/quotations', {
+      const response = await fetch(`${API_BASE_URL}/quotations`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Failed to fetch data');

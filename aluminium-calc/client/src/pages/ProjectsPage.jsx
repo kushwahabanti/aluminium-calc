@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import React, { useState, useEffect, useContext } from 'react';
 import { unitsToFraction } from '../../../shared/measurement/measurementEngine.js';
 import { AuthContext } from '../context/AuthContext.jsx';
@@ -16,7 +17,7 @@ export default function ProjectsPage() {
 
   const fetchQuotations = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/quotations', {
+      const response = await fetch(`${API_BASE_URL}/quotations`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Failed to fetch projects');
@@ -35,8 +36,8 @@ export default function ProjectsPage() {
     }
     
     try {
-      const response = await fetch(`http://localhost:5000/api/quotations/${id}`, {
-        method: 'DELETE',
+      const response = await fetch(`${API_BASE_URL}/quotations/${id}`, {
+        method: `DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Failed to delete project');
