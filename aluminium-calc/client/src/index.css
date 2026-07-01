@@ -1,0 +1,89 @@
+/* =========================================================
+   index.css — Global Design System
+   Theme: Dark Graphite + Emerald
+   ========================================================= */
+
+/* ── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Colors */
+  --bg-base:        #090c10;
+  --bg-surface:     #0e1318;
+  --bg-card:        #131920;
+  --bg-card-hover:  #161e26;
+  --bg-input:       #0b0f14;
+
+  --emerald:        #10b981;
+  --emerald-light:  #34d399;
+  --emerald-dim:    #059669;
+  --emerald-glow:   rgba(16, 185, 129, 0.15);
+  --emerald-border: rgba(16, 185, 129, 0.25);
+  --emerald-border-strong: rgba(16, 185, 129, 0.5);
+
+  --primary-color:  #10b981;
+  --secondary-color: #3b82f6;
+
+  --text-primary:   #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted:     #4b5563;
+  --text-emerald:   #10b981;
+
+  --border:         rgba(255,255,255,0.06);
+  --border-hover:   rgba(255,255,255,0.12);
+  --border-color:   rgba(255,255,255,0.1);
+
+  --error:          #f87171;
+  --error-bg:       rgba(248, 113, 113, 0.08);
+  --danger-color:   #ef4444;
+
+  --warning:        #fbbf24;
+
+  /* Typography */
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+
+/* ── Typography Utilities ─────────────────────────────── */
+.mono { font-family: var(--font-mono); }
+
+/* ── Animations ───────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse-emerald {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+  50%       { box-shadow: 0 0 0 4px rgba(16,185,129,0.12); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.animate-in { animation: fadeInUp 0.35s ease both; }

@@ -1,0 +1,9 @@
+{
+  "name": "@aluminium-calc/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "mathjs": "^15.2.0"
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Aluminium Calc</string>
+    <string name="title_activity_main">Aluminium Calc</string>
+    <string name="package_name">com.aluminiumcalc.app</string>
+    <string name="custom_url_scheme">com.aluminiumcalc.app</string>
+</resources>
